@@ -26,7 +26,7 @@ export default function Home() {
             />
           </a>
           <Image
-              src="/uno.jpeg"
+              src="https://services.meteored.com/img/article/por-que-el-cielo-se-torna-naranja-durante-el-atardecer-1684769231676_1280.jpeg"
               alt="Vercel Logo"
               className="dark:invert"
               width={100}
