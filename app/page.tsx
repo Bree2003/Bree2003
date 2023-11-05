@@ -25,6 +25,14 @@ export default function Home() {
               priority
             />
           </a>
+          <Image
+              src="/uno.jpeg"
+              alt="Vercel Logo"
+              className="dark:invert"
+              width={100}
+              height={24}
+              priority
+            />
         </div>
       </div>
 
