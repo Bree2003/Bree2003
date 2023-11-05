@@ -10,9 +10,9 @@ Here are some ideas to get you started: -->
 - 👯 I’m looking to collaborate on creative projects which are of importance to people, either to the users or the creator themselves.
 - 🤔 I’m looking for help with entrepreneurship, project development, public speaking and leadership.
 - 💬 Ask me about what kind of projects I am doing as a member of the Global Shapers Community.
-- 📫 How to reach me:
-  Phone number: +56 9 96642857
-  Email: breeale2003@gmail.com
-  LinkedIn: [Brisa Sandoval Hernández] (https://www.linkedin.com/in/brisa-sandoval-hernandez/)
+- 📫 How to reach me: <br/>
+      Phone number: +56 9 96642857 <br/>
+      Email: breeale2003@gmail.com <br/>
+      LinkedIn: [Brisa Sandoval Hernández](https://www.linkedin.com/in/brisa-sandoval-hernandez/)
 - 😄 Pronouns: She/her/hers
 - ⚡ Fun fact: I have an overactive imagination, so I always get startled when I think I see bugs, which I almost always do.
