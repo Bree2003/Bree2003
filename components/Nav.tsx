@@ -35,6 +35,7 @@ export default function Nav() {
                         <div className='bg-white relative flex text-primary items-center p-[6px] rounded-[3px]'>
                             <div className='text-[12px] leading-none font-semibold capitalize'>{link.name}</div>
                             {/* triangle */}
+                            <div className='border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] absolute -right-2'></div>
                         </div>
                     </div>
                     {/* icon */}
