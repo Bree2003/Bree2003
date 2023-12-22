@@ -1,5 +1,5 @@
 // testimonial slider data
-export const testimonialSlider = [
+const testimonialSlider = [
     {
         image: '/t-avt-1.png',
         name: 'Anne Smith',

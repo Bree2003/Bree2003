@@ -1,4 +1,4 @@
-export const workSlider = {
+const workSlider = {
     slides: [
         {
             images: [

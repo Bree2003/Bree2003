@@ -8,7 +8,7 @@ import {
 } from 'react-icons/rx';
 
 // service data
-export const serviceData = [
+const serviceData = [
     {
         icon: <RxCrop />,
         title: 'Branding',
