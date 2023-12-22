@@ -16,7 +16,7 @@ import {
 } from 'react-icons/si';
 
 // about data
-export const aboutData = [
+const aboutData = [
     {
         title: 'skills',
         info: [
