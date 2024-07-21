@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bree2003</title>
+    <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <!-- box icons link -->
     <link
@@ -27,14 +28,13 @@
     <header>
       <a href="#" class="logo">Portfolio</a>
       <ul class="navlist">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="option"><a href="#">Home</a></li>
+        <li class="option"><a href="#skills">Skills</a></li>
+        <li class="option"><a href="#projects">Projects</a></li>
+        <li class="option"><a href="#contact" contact>Contact</a></li>
       </ul>
       <div class="nav-right">
-        <a href="#" class="nav-btn">Hire me!</a>
+        <a href="#contact" class="nav-btn">Hire me!</a>
         <div class="bx bx-menu" id="menu-icon"></div>
       </div>
     </header>
@@ -49,13 +49,21 @@
         </p>
 
         <div class="hero-icons">
-          <a href="#"><i class="ri-github-fill"></i></a>
-          <a href="#"><i class="ri-instagram-fill"></i></a>
-          <a href="#"><i class="ri-linkedin-box-fill"></i></a>
+          <a href="https://github.com/Bree2003"
+            ><i class="ri-github-fill"></i
+          ></a>
+          <a href="https://www.instagram.com/brea._4"
+            ><i class="ri-instagram-fill"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/brisa-sandoval-hernandez"
+            ><i class="ri-linkedin-box-fill"></i
+          ></a>
         </div>
 
         <div class="hero-btn">
-          <a href="#" class="btn">Download CV</a>
+          <a href="./cv/Brisa Sandoval Dev.pdf" class="btn" download
+            >Download CV</a
+          >
           <a href="#" class="btn2">My skills</a>
         </div>
       </div>
@@ -69,22 +77,14 @@
       <a href="#"><i class="ri-scroll-to-bottom-fill"></i>Scroll Bottom</a>
     </div>
 
+    <section>
+      <iframe id="skills" src="html/skills.html" title="Skills"></iframe>
+      <iframe id="projects" src="html/projects.html" title="Projects"></iframe>
+      <iframe id="contact" src="html/contact.html" title="Contact"></iframe>
+    </section>
+
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script type="text/javascript">
-      var typed = new Typed(".input", {
-        strings: ["Fullstack Developer.", "Web Developer.", "Photographer."],
-        typeSpeed: 80,
-        backSpeed: 70,
-        loop: true,
-      });
-
-      let menu = document.querySelector("#menu-icon");
-      let navlist = document.querySelector(".navlist");
-
-      menu.onclick = () => {
-        menu.classList.toggle("bx-x");
-        navlist.classList.toggle("open");
-      };
-    </script>
+    <script src="js/script.js"></script>
+    <script src="js/iframe.js"></script>
   </body>
 </html>
