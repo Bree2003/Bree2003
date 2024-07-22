@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="../css/global.css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      input,
+      textarea {
+        border-radius: 20px;
+        width: 100%;
+        padding: 13px;
+        margin: 10px 0;
+      }
+      button {
+        height: 50px;
+        padding: 10px 20px;
+        background-color: #25d366;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contacto</h1>
+
+    <div class="container">
+      <form id="contact-form" class="hero-text">
+        <input type="text" id="name" placeholder="Tu nombre" required />
+        <textarea id="message" placeholder="Tu mensaje" required></textarea>
+        <button type="submit" class="nav-btn">Enviar WhatsApp</button>
+      </form>
+    </div>
+    <script src="../js/contact-whatsapp.js"></script>
+  </body>
+</html>
