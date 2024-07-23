@@ -37,13 +37,15 @@ const projects = [
   },
 ];
 
-let divProjects = document.querySelector("#projects");
+const divProjects = document.querySelector("#projects");
 
 projects.forEach((project) => {
   const div = document.createElement("div");
   const h3 = document.createElement("h3");
   const img = document.createElement("img");
   const p = document.createElement("p");
+  div.classList.add("item");
+  div.classList.add(`item${project.id}`);
   h3.textContent = project.title;
   img.src = project.image;
   img.alt = project.title;
