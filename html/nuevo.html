@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Web | Desarrollo y Diseño</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        },
+                        dark: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            border: '#334155'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        /* Ocultar barra de desplazamiento pero mantener funcionalidad */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Barra de Navegación -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        B
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Portafolio</span>
+                </div>
+                
+                <!-- Menú Escritorio -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Inicio</a>
+                    <a href="#experiencia" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Trayectoria</a>
+                    <a href="#habilidades" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Herramientas</a>
+                    <a href="#proyectos" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Proyectos</a>
+                    <a href="#contacto" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all shadow-lg shadow-brand-500/30">Contactar</a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-2xl">
+                <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-dark-border mobile-link">Inicio</a>
+                <a href="#experiencia" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-dark-border mobile-link">Trayectoria</a>
+                <a href="#habilidades" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-dark-border mobile-link">Herramientas</a>
+                <a href="#proyectos" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-dark-border mobile-link">Proyectos</a>
+                <a href="#contacto" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-brand-600 text-white mobile-link">Contactar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Efectos de fondo abstracto -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dark-border/50 border border-dark-border text-sm text-brand-400 mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Disponible para nuevos proyectos
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                    Hola, soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500">Brisa Sandoval</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-400 font-medium mb-8">
+                    Desarrolladora Web, Diseñadora UI/UX & Vicecuradora Global Shapers
+                </h2>
+                <p class="text-lg text-gray-400 mb-10 leading-relaxed">
+                    Especializada en crear experiencias digitales completas y Vicecuradora (2026-2027) en Global Shapers Hub Santiago. Transformo ideas complejas en plataformas web intuitivas, rápidas y de alto impacto, liderando proyectos desde el diseño visual (UI/UX) hasta el despliegue en la nube.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#proyectos" class="bg-white text-dark-bg px-8 py-3.5 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                        Ver mi trabajo <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contacto" class="bg-dark-card border border-dark-border text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-dark-border transition-all flex items-center justify-center gap-2">
+                        Contactar <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <div class="mt-16 pt-8 border-t border-dark-border flex justify-center gap-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/brisa-sandoval-hernandez/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-400 transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors text-2xl"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Trayectoria y Experiencia -->
+    <section id="experiencia" class="py-24 bg-dark-card/30 border-y border-dark-border/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Trayectoria y Experiencia</h2>
+                <div class="w-20 h-1.5 bg-brand-500 mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto">Un recorrido por mi evolución profesional liderando proyectos tecnológicos, diseñando interfaces y desarrollando soluciones web de punta a punta.</p>
+            </div>
+
+            <div class="relative border-l-2 border-dark-border ml-3 md:ml-6 space-y-12">
+                
+                <!-- Experiencia 1: Deloitte -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute w-4 h-4 bg-brand-500 rounded-full -left-[9px] top-1 border-4 border-dark-bg"></div>
+                    <div class="md:grid md:grid-cols-5 md:gap-8 items-start">
+                        <div class="hidden md:block col-span-1 text-right pt-1 relative">
+                            <span class="text-brand-400 font-semibold">2024 - Presente</span>
+                            <div class="absolute w-4 h-4 bg-brand-500 rounded-full -right-[25px] top-2 border-4 border-dark-bg z-10"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-dark-card p-6 rounded-xl border border-dark-border shadow-lg hover:border-brand-500/50 transition-colors">
+                            <span class="md:hidden text-brand-400 font-semibold text-sm block mb-2">2024 - Presente</span>
+                            <h3 class="text-xl font-bold text-white">Fullstack Data Engineer</h3>
+                            <h4 class="text-lg text-gray-400 mb-4">Deloitte</h4>
+                            <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                                Diseño e implementación de soluciones integrales de datos. Desarrollo de aplicaciones full-stack para la visualización y gestión de información estratégica, creación de pipelines de datos (ETL) e integración de arquitecturas Cloud para optimizar la toma de decisiones empresariales.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Data Engineering</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Full-Stack</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Cloud Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia 2: Vicecuradora -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-1 border-4 border-dark-bg"></div>
+                    <div class="md:grid md:grid-cols-5 md:gap-8 items-start">
+                        <div class="hidden md:block col-span-1 text-right pt-1 relative">
+                            <span class="text-blue-400 font-semibold">2026 - 2027</span>
+                            <div class="absolute w-4 h-4 bg-blue-500 rounded-full -right-[25px] top-2 border-4 border-dark-bg z-10"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-dark-card p-6 rounded-xl border border-dark-border shadow-lg hover:border-blue-500/50 transition-colors">
+                            <span class="md:hidden text-blue-400 font-semibold text-sm block mb-2">2026 - 2027</span>
+                            <h3 class="text-xl font-bold text-white">Vicecuradora</h3>
+                            <h4 class="text-lg text-gray-400 mb-4">Global Shapers Hub Santiago</h4>
+                            <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                                Liderazgo y co-gestión del hub local de la iniciativa del Foro Económico Mundial. Coordinación de proyectos de impacto social, gestión de alianzas y fomento del desarrollo de jóvenes líderes en la comunidad de Santiago.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Liderazgo</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Impacto Social</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Gestión de Proyectos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia 3: Cencosud -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute w-4 h-4 bg-green-500 rounded-full -left-[9px] top-1 border-4 border-dark-bg"></div>
+                    <div class="md:grid md:grid-cols-5 md:gap-8 items-start">
+                        <div class="hidden md:block col-span-1 text-right pt-1 relative">
+                            <span class="text-green-400 font-semibold">2023 - 2024</span>
+                            <div class="absolute w-4 h-4 bg-green-500 rounded-full -right-[25px] top-2 border-4 border-dark-bg z-10"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-dark-card p-6 rounded-xl border border-dark-border shadow-lg hover:border-green-500/50 transition-colors">
+                            <span class="md:hidden text-green-400 font-semibold text-sm block mb-2">2023 - 2024</span>
+                            <h3 class="text-xl font-bold text-white">Desarrolladora de Software</h3>
+                            <h4 class="text-lg text-gray-400 mb-4">Cencosud S.A.</h4>
+                            <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                                Participación en el desarrollo y mantenimiento de plataformas tecnológicas clave para retail. Trabajo bajo metodologías ágiles enfocadas en mejorar la experiencia del usuario final, optimizar el rendimiento de aplicaciones de alto tráfico e implementar nuevas funcionalidades.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Desarrollo Web</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Retail & E-commerce</span>
+                                <span class="px-3 py-1 bg-dark-bg text-gray-300 rounded-full text-xs border border-dark-border">Metodologías Ágiles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia 4: Freelance / Consultoría -->
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden absolute w-4 h-4 bg-purple-500 rounded-full -left-[9px] top-1 border-4 border-dark-bg"></div>
+                    <div class="md:grid md:grid-cols-5 md:gap-8 items-start">
+                        <div class="hidden md:block col-span-1 text-right pt-1 relative">
+                            <span class="text-purple-400 font-semibold">2021 - Presente</span>
+                            <div class="absolute w-4 h-4 bg-purple-500 rounded-full -right-[25px] top-2 border-4 border-dark-bg z-10"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-dark-card p-6 rounded-xl border border-dark-border shadow-lg hover:border-purple-500/50 transition-colors">
+                            <span class="md:hidden text-purple-400 font-semibold text-sm block mb-2">2021 - Presente</span>
+                            <h3 class="text-xl font-bold text-white">Desarrolladora Web y Diseñadora UI/UX Independiente</h3>
+                            <h4 class="text-lg text-gray-400 mb-4">Freelance / Consultoría</h4>
+                            <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                                Diseño, arquitectura y desarrollo "End-to-End" para múltiples clientes corporativos y ONGs. Especialista en modernización de plataformas, creación de portales administrables con paneles personalizados y flujos de autenticación segura. Entregando proyectos llave en mano desde el mockup en Figma hasta el despliegue en producción.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 mb-4">
+                                <li>Rediseño y desarrollo de sitios institucionales y e-commerce.</li>
+                                <li>Desarrollo de paneles administrativos (CMS propios).</li>
+                                <li>Diseño de interfaces centradas en el usuario (Figma).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Herramientas y Frameworks -->
+    <section id="habilidades" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frameworks y Herramientas</h2>
+                <div class="w-20 h-1.5 bg-indigo-500 mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto">Mi stack tecnológico abarca tanto el diseño de la experiencia como la implementación técnica robusta en el cliente, el servidor y arquitecturas Cloud.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Frontend -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl shadow-lg hover:border-dark-border/80 transition-colors">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-desktop text-2xl text-blue-400"></i>
+                        <h3 class="text-xl font-bold text-white">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-orange-500 transition-colors"><i class="fab fa-html5 text-orange-500"></i> HTML5</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-500 transition-colors"><i class="fab fa-css3-alt text-blue-500"></i> CSS3</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-yellow-400 transition-colors"><i class="fab fa-js text-yellow-400"></i> JavaScript</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-600 transition-colors">TypeScript</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-cyan-400 transition-colors"><i class="fab fa-react text-cyan-400"></i> React</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-white transition-colors">Next.js</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-teal-400 transition-colors">Tailwind CSS</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-purple-500 transition-colors"><i class="fab fa-bootstrap text-purple-500"></i> Bootstrap</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-400 transition-colors">jQuery</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-gray-400 transition-colors"><i class="fab fa-markdown text-gray-400"></i> Markdown</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Bases de Datos -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl shadow-lg hover:border-dark-border/80 transition-colors">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-server text-2xl text-green-400"></i>
+                        <h3 class="text-xl font-bold text-white">Backend & BD</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-green-500 transition-colors"><i class="fab fa-node-js text-green-500"></i> Node.js</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-red-500 transition-colors">NestJS</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-white transition-colors">Fastify</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-orange-600 transition-colors"><i class="fab fa-java text-orange-600"></i> Java</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-300 transition-colors"><i class="fas fa-database text-blue-300"></i> MySQL</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-yellow-500 transition-colors">Firebase</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-red-400 transition-colors">Apache</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-gray-300 transition-colors">JWT</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-400 transition-colors"><i class="fab fa-wordpress text-blue-400"></i> WordPress</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl shadow-lg hover:border-dark-border/80 transition-colors">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-cloud text-2xl text-orange-400"></i>
+                        <h3 class="text-xl font-bold text-white">Cloud & DevOps</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-orange-500 transition-colors"><i class="fab fa-aws text-orange-500"></i> AWS</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-500 transition-colors"><i class="fab fa-google text-blue-500"></i> GCP</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-white transition-colors">Vercel</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-gray-400 transition-colors"><i class="fab fa-github text-gray-400"></i> GitHub Pages</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-purple-400 transition-colors">Glitch</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-red-500 transition-colors"><i class="fab fa-npm text-red-500"></i> NPM</span>
+                    </div>
+                </div>
+
+                <!-- Diseño & Gestión -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-2xl shadow-lg hover:border-dark-border/80 transition-colors">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-paint-brush text-2xl text-pink-400"></i>
+                        <h3 class="text-xl font-bold text-white">Diseño & Herramientas</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-pink-400 transition-colors"><i class="fab fa-figma text-pink-400"></i> Figma</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-500 transition-colors">Adobe Photoshop</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-cyan-400 transition-colors">Canva</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-orange-500 transition-colors">Postman</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-600 transition-colors"><i class="fab fa-jira text-blue-600"></i> Jira</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-blue-400 transition-colors"><i class="fab fa-trello text-blue-400"></i> Trello</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-gray-300 flex items-center gap-2 hover:border-gray-200 transition-colors">Notion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos Destacados -->
+    <section id="proyectos" class="py-24 bg-dark-bg border-t border-dark-border/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Proyectos Destacados</h2>
+                <div class="w-20 h-1.5 bg-brand-500 mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto">Una selección de mis trabajos más recientes. Desde el concepto inicial y diseño visual hasta el despliegue de plataformas complejas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Proyecto: Mindsight -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/a855f7?text=Mindsight+App" alt="Mindsight" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">IA & Bienestar</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Mindsight</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Startup chilena de bienestar digital. <strong>Rediseño y desarrollo web total</strong> de la plataforma que acompaña su app con Inteligencia artificial para mejorar el sueño y la salud mental.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Diseño UI/UX</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Frontend</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Backend</span>
+                        </div>
+                        <a href="https://www.mindsight.cl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Global Shapers Santiago -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/3b82f6?text=Global+Shapers+Stgo" alt="Global Shapers Santiago" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Institucional & CMS</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Global Shapers Santiago</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Iniciativa del Foro Económico Mundial. <strong>Creación de diseño y desarrollo total</strong> de página institucional más un robusto <strong>Panel Administrador</strong> para autogestión de miembros, alianzas, proyectos y noticias.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Full-Stack</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Panel Admin a medida</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Base de Datos</span>
+                        </div>
+                        <a href="https://www.globalshapersantiago.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Innpact Shaper -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/10b981?text=Innpact+Shaper" alt="Innpact Shaper" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Educación & Innovación</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Innpact Shaper</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Articuladora de Innovación y Sustentabilidad. <strong>Creación de diseño y desarrollo total</strong> de la plataforma para conectar jóvenes talentos con Empresas B de triple impacto.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Diseño UI/UX</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Desarrollo Web</span>
+                        </div>
+                        <a href="https://www.innpactshaper.cl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Federación Chilena de Ajedrez -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/eab308?text=Ajedrez+Chile" alt="Federación Chilena de Ajedrez" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Deportes & Torneos</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Fed. Chilena de Ajedrez</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Institución deportiva oficial de Chile (AJEFECH). <strong>Rediseño completo y desarrollo total</strong> de su portal principal para centralizar noticias, torneos, elo nacional y comunicación oficial.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Rediseño UI</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Desarrollo Completo</span>
+                        </div>
+                        <a href="https://www.federacionchilenadeajedrez.cl/new/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Altos del Elizalde -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/0ea5e9?text=Altos+del+Elizalde" alt="Altos del Elizalde" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Inmobiliario & Naturaleza</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Altos del Elizalde</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Proyecto inmobiliario de primera línea en la Patagonia chilena. <strong>Creación de diseño e identidad visual, y desarrollo total</strong> de la vitrina web para presentación de parcelas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Web Design</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Frontend Development</span>
+                        </div>
+                        <a href="https://altosdelelizalde.cl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proyecto: Atlas ONG -->
+                <div class="project-card bg-dark-card rounded-2xl border border-dark-border overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-56 overflow-hidden bg-gray-800">
+                        <img src="https://placehold.co/600x400/1e293b/f43f5e?text=Atlas+ONG" alt="Atlas ONG" class="project-img w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">ONG & Registro</div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Atlas ONG</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
+                            Plataforma de organización no gubernamental. Trabajo enfocado en <strong>crear el diseño y desarrollo de la landing page principal</strong>, junto a flujos seguros de <strong>formularios de inicio de sesión y registro</strong>.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Landing Page UI</span>
+                            <span class="text-xs bg-dark-bg border border-dark-border px-2 py-1 rounded text-gray-300">Auth Flow / Forms</span>
+                        </div>
+                        <a href="https://www.atlas.ong/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium group-hover:underline">
+                            Visitar sitio web <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto y Footer -->
+    <section id="contacto" class="py-20 relative bg-dark-card border-t border-dark-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">¿Trabajamos juntos?</h2>
+            <p class="text-gray-400 text-lg mb-10">
+                Estoy siempre abierta a conversar sobre nuevos proyectos, oportunidades freelance o colaboraciones. Si tienes un proyecto en mente, escríbeme.
+            </p>
+            <a href="mailto:hola@ejemplo.com" class="inline-flex items-center justify-center bg-brand-600 hover:bg-brand-500 text-white text-lg px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/30 gap-3 hover:-translate-y-1">
+                Envíame un mensaje <i class="fas fa-paper-plane"></i>
+            </a>
+            
+            <div class="mt-20 pt-8 border-t border-dark-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-400 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                        B
+                    </div>
+                    <span class="font-bold text-gray-300">Portafolio Web</span>
+                </div>
+                <p class="text-gray-500 text-sm">© 2026 Desarrollado y diseñado con ♥.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    <a href="https://www.linkedin.com/in/brisa-sandoval-hernandez/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-400 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para comportamiento interactivo -->
+    <script>
+        // Manejo del menú móvil
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        const menuMovil = document.getElementById('mobile-menu');
+        const enlacesMoviles = document.querySelectorAll('.mobile-link');
+
+        btnMenu.addEventListener('click', () => {
+            menuMovil.classList.toggle('hidden');
+        });
+
+        // Ocultar menú al hacer click en un enlace móvil
+        enlacesMoviles.forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                menuMovil.classList.add('hidden');
+            });
+        });
+
+        // Efecto visual en la barra de navegación al hacer scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg');
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.style.background = 'rgba(15, 23, 42, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>

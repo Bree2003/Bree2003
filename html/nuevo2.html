@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brisa Sandoval | Data Engineer & UI/UX Designer</title>
+    
+    <!-- Fuentes de Google: Outfit para títulos (moderna/tech) y Plus Jakarta Sans para lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#EEF2FF',
+                            DEFAULT: '#4338CA', // Índigo vibrante (Tecnología)
+                            accent: '#F97316', // Naranja/Coral (Creatividad)
+                        },
+                        base: '#F8F9FA', // Off-white (Papel/Elegancia)
+                        surface: '#FFFFFF',
+                        ink: '#0F172A', // Texto principal oscuro
+                        slate: '#475569' // Texto secundario
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z' fill='%23000000' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #0F172A;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Scrollbar elegante */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FA; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8; 
+        }
+
+        /* Glassmorphism sutil para navegación clara */
+        .glass-nav {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Efectos Hover Proyectos */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        /* Utilidades de texto */
+        .text-balance {
+            text-wrap: balance;
+        }
+    </style>
+</head>
+<body class="selection:bg-brand selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-lg bg-ink flex items-center justify-center text-white font-heading font-bold text-xl group-hover:bg-brand transition-colors">
+                        B.
+                    </div>
+                    <span class="font-heading font-bold text-xl tracking-tight text-ink">Brisa Sandoval</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#enfoque" class="text-slate hover:text-brand transition-colors text-sm font-semibold tracking-wide uppercase">Enfoque</a>
+                    <a href="#trayectoria" class="text-slate hover:text-brand transition-colors text-sm font-semibold tracking-wide uppercase">Trayectoria</a>
+                    <a href="#ecosistema" class="text-slate hover:text-brand transition-colors text-sm font-semibold tracking-wide uppercase">Ecosistema</a>
+                    <a href="#proyectos" class="text-slate hover:text-brand transition-colors text-sm font-semibold tracking-wide uppercase">Proyectos</a>
+                    <a href="#contacto" class="bg-ink hover:bg-brand text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md">Hablemos</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-ink p-2 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-gray-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <a href="#enfoque" class="block px-4 py-3 rounded-md text-base font-medium text-ink hover:bg-gray-50 mobile-link">Enfoque</a>
+                <a href="#trayectoria" class="block px-4 py-3 rounded-md text-base font-medium text-ink hover:bg-gray-50 mobile-link">Trayectoria</a>
+                <a href="#ecosistema" class="block px-4 py-3 rounded-md text-base font-medium text-ink hover:bg-gray-50 mobile-link">Ecosistema</a>
+                <a href="#proyectos" class="block px-4 py-3 rounded-md text-base font-medium text-ink hover:bg-gray-50 mobile-link">Proyectos</a>
+                <a href="#contacto" class="block px-4 py-3 mt-4 text-center rounded-md text-base font-medium bg-brand text-white mobile-link">Hablemos</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center bg-base bg-grid-pattern">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm text-brand font-semibold mb-8 shadow-sm">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                        </span>
+                        Vicecuradora Global Shapers Santiago '26-'27
+                    </div>
+                    
+                    <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-ink mb-6 text-balance leading-[1.1]">
+                        Lógica estructural.<br>
+                        Diseño empático.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-brand-accent">Impacto real.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-slate mb-10 max-w-2xl leading-relaxed text-balance">
+                        Soy <strong>Fullstack Data Engineer</strong> y <strong>Diseñadora UI/UX</strong>. 
+                        Transformo datos complejos y lógicas de negocio en arquitecturas robustas y experiencias digitales profundamente humanas.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#proyectos" class="bg-brand text-white px-8 py-4 rounded-full font-semibold hover:bg-ink transition-all flex items-center justify-center gap-3 shadow-lg shadow-brand/20">
+                            Explorar Portafolio <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/brisa-sandoval-hernandez/" target="_blank" rel="noopener noreferrer" class="bg-white border-2 border-gray-200 text-ink px-8 py-4 rounded-full font-semibold hover:border-brand hover:text-brand transition-all flex items-center justify-center gap-3">
+                            <i class="fab fa-linkedin text-xl"></i> Conectar en LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Elemento visual decorativo a la derecha -->
+                <div class="hidden lg:flex lg:col-span-4 justify-center relative">
+                    <div class="absolute inset-0 bg-brand/5 rounded-full blur-3xl"></div>
+                    <div class="w-72 h-72 rounded-full border border-gray-200 bg-white shadow-2xl p-8 relative z-10 flex flex-col justify-center items-center gap-6">
+                        <div class="w-full flex justify-between px-4">
+                            <i class="fas fa-database text-3xl text-ink"></i>
+                            <i class="fas fa-pen-nib text-3xl text-brand-accent"></i>
+                        </div>
+                        <div class="w-full h-px bg-gray-100"></div>
+                        <i class="fas fa-globe-americas text-4xl text-brand"></i>
+                        <p class="font-heading font-bold text-sm text-slate uppercase tracking-widest text-center mt-2">Data &<br>Design</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="trayectoria" class="py-24 bg-surface border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <div class="lg:grid lg:grid-cols-12 gap-16 items-start">
+                
+                <!-- Columna Izquierda: Título Sticky -->
+                <div class="lg:col-span-4 lg:sticky lg:top-32 mb-12 lg:mb-0">
+                    <h2 class="font-heading text-4xl font-bold text-ink mb-4">Evolución<br>Profesional</h2>
+                    <div class="w-12 h-1 bg-brand mb-6"></div>
+                    <p class="text-slate">
+                        Mi carrera es un puente entre la ingeniería pura (datos, backend, cloud) y la interacción humana (UI/UX, impacto social).
+                    </p>
+                </div>
+
+                <!-- Columna Derecha: Timeline limpio -->
+                <div class="lg:col-span-8 space-y-12">
+                    
+                    <!-- Exp 1: Deloitte -->
+                    <div class="group relative border-l-2 border-gray-100 pl-8 pb-4 transition-colors hover:border-brand">
+                        <div class="absolute w-4 h-4 bg-white border-2 border-gray-200 rounded-full -left-[9px] top-1 group-hover:border-brand group-hover:bg-brand transition-all"></div>
+                        <span class="text-brand font-bold text-sm uppercase tracking-wider mb-1 block">2024 - Presente</span>
+                        <h3 class="font-heading text-2xl font-bold text-ink">Fullstack Data Engineer</h3>
+                        <h4 class="text-lg text-slate font-medium mb-4">Deloitte</h4>
+                        <p class="text-slate mb-4 leading-relaxed">
+                            Diseño, arquitectura e implementación de soluciones integrales de datos. Desarrollo pipelines ETL complejos, gestiono infraestructuras Cloud (AWS/GCP) y construyo aplicaciones full-stack para la visualización estratégica, uniendo la ciencia de datos con interfaces de usuario consumibles.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Data Engineering</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Cloud Architecture</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Fullstack</span>
+                        </div>
+                    </div>
+
+                    <!-- Exp 2: Global Shapers -->
+                    <div class="group relative border-l-2 border-gray-100 pl-8 pb-4 transition-colors hover:border-brand-accent">
+                        <div class="absolute w-4 h-4 bg-white border-2 border-gray-200 rounded-full -left-[9px] top-1 group-hover:border-brand-accent group-hover:bg-brand-accent transition-all"></div>
+                        <span class="text-brand-accent font-bold text-sm uppercase tracking-wider mb-1 block">2026 - 2027</span>
+                        <h3 class="font-heading text-2xl font-bold text-ink">Vicecuradora</h3>
+                        <h4 class="text-lg text-slate font-medium mb-4">Global Shapers Hub Santiago (World Economic Forum)</h4>
+                        <p class="text-slate mb-4 leading-relaxed">
+                            Co-liderazgo estratégico del hub local. Conecto tecnología e innovación con impacto social, gestionando proyectos, articulando alianzas clave y fomentando el desarrollo de soluciones digitales que benefician a la comunidad.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Liderazgo</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Impacto Social</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Tech for Good</span>
+                        </div>
+                    </div>
+
+                    <!-- Exp 3: Cencosud -->
+                    <div class="group relative border-l-2 border-gray-100 pl-8 pb-4 transition-colors hover:border-ink">
+                        <div class="absolute w-4 h-4 bg-white border-2 border-gray-200 rounded-full -left-[9px] top-1 group-hover:border-ink group-hover:bg-ink transition-all"></div>
+                        <span class="text-slate font-bold text-sm uppercase tracking-wider mb-1 block">2023 - 2024</span>
+                        <h3 class="font-heading text-2xl font-bold text-ink">Desarrolladora de Software</h3>
+                        <h4 class="text-lg text-slate font-medium mb-4">Cencosud S.A.</h4>
+                        <p class="text-slate mb-4 leading-relaxed">
+                            Desarrollo de plataformas e-commerce y sistemas internos para uno de los retailers más grandes de LATAM. Enfoque en rendimiento, escalabilidad bajo alta concurrencia y metodologías ágiles, asegurando una experiencia de usuario fluida en todo el ecosistema digital.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Retail & E-commerce</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Backend & API</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink rounded-md text-xs font-semibold border border-gray-200">Agile</span>
+                        </div>
+                    </div>
+
+                    <!-- Exp 4: Freelance / Consultoría -->
+                    <div class="group relative border-l-2 border-gray-100 pl-8 transition-colors hover:border-brand">
+                        <div class="absolute w-4 h-4 bg-white border-2 border-gray-200 rounded-full -left-[9px] top-1 group-hover:border-brand group-hover:bg-brand transition-all"></div>
+                        <span class="text-brand font-bold text-sm uppercase tracking-wider mb-1 block">2021 - Presente</span>
+                        <h3 class="font-heading text-2xl font-bold text-ink">Desarrolladora Web y Diseñadora UI/UX Independiente</h3>
+                        <h4 class="text-lg text-slate font-medium mb-4">Consultoría Técnica B2B & ONGs</h4>
+                        <p class="text-slate mb-4 leading-relaxed">
+                            Diseño y arquitectura "End-to-End". Desde la conceptualización de la marca y flujos en Figma, hasta el desarrollo del frontend (React/Next), backend, CMS personalizados, bases de datos y despliegue en la nube. Proyectos llave en mano de alto impacto.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosistema" class="py-24 bg-base relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="mb-16">
+                <h2 class="font-heading text-4xl font-bold text-ink mb-4">Ecosistema Tecnológico</h2>
+                <div class="w-12 h-1 bg-brand mb-6"></div>
+                <p class="text-slate max-w-2xl text-lg">
+                    Las herramientas que utilizo para construir la estructura invisible (Data/Backend) y la experiencia visible (UI/UX/Frontend).
+                </p>
+            </div>
+
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Frontend -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-ink mb-6">Frontend & Interfaz</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">React</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Next.js</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">TypeScript</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">JavaScript</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Bootstrap</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">HTML5 & CSS3</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">jQuery</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Cloud -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-ink mb-6">Backend & Data/Cloud</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-brand text-white border border-brand rounded-md text-sm font-semibold shadow-sm">Node.js</span>
+                        <span class="px-3 py-1.5 bg-brand text-white border border-brand rounded-md text-sm font-semibold shadow-sm">AWS</span>
+                        <span class="px-3 py-1.5 bg-brand text-white border border-brand rounded-md text-sm font-semibold shadow-sm">GCP</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">MySQL</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Java</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">NestJS</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Fastify</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Firebase</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">JWT</span>
+                        <span class="px-3 py-1.5 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Apache</span>
+                    </div>
+                </div>
+
+                <!-- Diseño & Ops (Vertical Split) -->
+                <div class="grid grid-rows-2 gap-6">
+                    <!-- Diseño -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-pen-nib text-brand-accent text-xl"></i>
+                            <h3 class="font-heading text-lg font-bold text-ink">Diseño UI/UX</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 border border-orange-100 rounded-md text-sm font-semibold">Figma</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Photoshop</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-sm font-semibold">Canva</span>
+                        </div>
+                    </div>
+                    <!-- DevOps & Tools -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-code-branch text-slate text-xl"></i>
+                            <h3 class="font-heading text-lg font-bold text-ink">Ops & Gestión</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">Vercel</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">GitHub Pages</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">NPM</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">Postman</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">Jira</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">Notion</span>
+                            <span class="px-3 py-1 bg-gray-50 text-ink border border-gray-200 rounded-md text-xs font-semibold">Trello</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="py-24 bg-surface border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="font-heading text-4xl font-bold text-ink mb-4">Trabajos Destacados</h2>
+                <div class="w-12 h-1 bg-brand mb-6"></div>
+                <p class="text-slate max-w-2xl text-lg">
+                    Proyectos donde he liderado desde la concepción del diseño en Figma hasta el desarrollo técnico y despliegue final.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Mindsight -->
+                <a href="https://www.mindsight.cl/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/EEF2FF/4338CA?text=Mindsight" alt="Mindsight" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">IA & Salud Mental</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Mindsight</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            Startup chilena de bienestar digital. <strong>Rediseño y desarrollo web total</strong> de la plataforma que acompaña su app con IA.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-slate">UI/UX</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-slate">Desarrollo End-to-End</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Global Shapers -->
+                <a href="https://www.globalshapersantiago.org/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/E0F2FE/0369A1?text=Global+Shapers" alt="Global Shapers Santiago" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">CMS & Institucional</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Global Shapers Santiago</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            <strong>Diseño y desarrollo Fullstack</strong>. Incluye página principal y un robusto Panel Administrador para gestionar miembros, alianzas, proyectos y blog.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-brand">Admin Dashboard</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-slate">Bases de Datos</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Fed Ajedrez -->
+                <a href="https://www.federacionchilenadeajedrez.cl/new/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/FEF9C3/A16207?text=AJEFECH" alt="Federación Chilena de Ajedrez" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">Deportes Oficiales</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Fed. Chilena de Ajedrez</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            <strong>Rediseño completo y desarrollo total</strong> del portal oficial para centralizar noticias, torneos y comunicación de la federación.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-slate">UI/UX</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-slate">Desarrollo Web</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Innpact Shaper -->
+                <a href="https://www.innpactshaper.cl/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/DCFCE7/15803D?text=Innpact+Shaper" alt="Innpact Shaper" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">Innovación B</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Innpact Shaper</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            <strong>Creación de diseño y desarrollo total</strong> de plataforma conectora entre jóvenes talentos y Empresas B de triple impacto.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-slate">Branding</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-slate">Desarrollo Frontend</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Altos del Elizalde -->
+                <a href="https://altosdelelizalde.cl/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/F1F5F9/334155?text=Altos+Elizalde" alt="Altos del Elizalde" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">Inmobiliario Patagonia</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Altos del Elizalde</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            <strong>Identidad visual, diseño y desarrollo total</strong> de la vitrina digital corporativa para venta de parcelas de alto estándar.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-slate">Diseño Web</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-slate">Desarrollo</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Atlas ONG -->
+                <a href="https://www.atlas.ong/" target="_blank" rel="noopener noreferrer" class="project-card block bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-64 overflow-hidden bg-gray-100">
+                        <img src="https://placehold.co/800x600/FFE4E6/BE123C?text=Atlas+ONG" alt="Atlas ONG" class="project-img w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-md shadow-sm border border-gray-100">
+                            <span class="text-xs font-bold text-ink uppercase tracking-wider">ONG & Seguridad</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="font-heading text-2xl font-bold text-ink mb-3 group-hover:text-brand transition-colors">Atlas ONG</h3>
+                        <p class="text-slate text-sm mb-6 flex-grow leading-relaxed">
+                            <strong>Diseño y desarrollo de landing page</strong> y flujos seguros de <strong>formularios de inicio de sesión y registro</strong>.
+                        </p>
+                        <div class="flex flex-wrap gap-2 border-t border-gray-100 pt-4">
+                            <span class="text-xs font-semibold text-slate">Landing Page</span>
+                            <span class="text-xs font-semibold text-slate">&bull;</span>
+                            <span class="text-xs font-semibold text-brand">Auth Flows</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 relative bg-ink text-white">
+        <!-- Textura sutil de fondo -->
+        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z\' fill=\'%23ffffff\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')]"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <span class="text-brand-accent font-bold uppercase tracking-widest text-sm mb-4 block">Contacto</span>
+            <h2 class="font-heading text-4xl md:text-6xl font-bold mb-8">Arquitectemos tu próxima idea.</h2>
+            <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light">
+                Ya sea que necesites una infraestructura de datos robusta, un rediseño de interfaz, o un sistema completo end-to-end. Hablemos.
+            </p>
+            <a href="https://www.linkedin.com/in/brisa-sandoval-hernandez/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand hover:bg-brand/90 text-white text-lg px-10 py-5 rounded-full font-bold transition-all shadow-lg hover:-translate-y-1 gap-3">
+                Contactar en LinkedIn <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            
+            <div class="mt-24 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-white text-ink flex items-center justify-center font-heading font-bold text-sm">
+                        B.
+                    </div>
+                    <span class="font-bold text-gray-300">Brisa Sandoval</span>
+                </div>
+                <p class="text-gray-500 text-sm font-medium">© 2026. Data Engineering & UI/UX Design.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Menú móvil
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        const menuMovil = document.getElementById('mobile-menu');
+        const enlacesMoviles = document.querySelectorAll('.mobile-link');
+
+        btnMenu.addEventListener('click', () => {
+            menuMovil.classList.toggle('hidden');
+        });
+
+        enlacesMoviles.forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                menuMovil.classList.add('hidden');
+            });
+        });
+
+        // Efecto scroll nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(248, 249, 250, 0.85)';
+            }
+        });
+    </script>
+</body>
+</html>
