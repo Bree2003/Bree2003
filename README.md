@@ -1,6 +1,90 @@
-# 💫 About Me:
+# 👋 Hi, I'm Brisa Sandoval
 
-Hi there 👋<br><!-- 🔭 I’m currently working on a startup where we work on our own or client projects to support trainees who are entering the job market, so they can polish their communication and leadership skills, all while gaining experience.<br> -->🌱 I’m currently learning layout in figma, business canvas model and website development with React and NestJs.<br>👯 I’m looking to collaborate on creative projects which are of importance to people, either to the users or the creator themselves.<br>🤔 I’m looking for help with entrepreneurship, project development, public speaking and leadership.<br>💬 Ask me about what kind of projects I am doing as a member of the Global Shapers Community.<br>📫 How to reach me:<br>Phone number: +56 9 96642857<br>Email: breeale2003@gmail.com<br>😄 Pronouns: She/her/hers<br>⚡ Fun fact: I have an overactive imagination, so I always get startled when I think I see bugs, which I almost always do.
+### Full Stack Data Engineer • UI/UX Designer • Tech for Impact
+
+I build digital products that combine robust engineering, thoughtful design, and meaningful impact.
+
+My work sits at the intersection of **software engineering, data, product design, and social innovation**. Whether I'm developing a data platform, designing a user experience, or leading a community initiative, my goal is always the same: create technology that genuinely helps people.
+
+---
+
+## 🚀 What I'm doing
+
+- 💼 Full Stack Data Engineer at Deloitte
+- 🌎 Vice Curator of Global Shapers Santiago (World Economic Forum)
+- 🎨 Designing and developing end-to-end digital products
+- 📊 Building data-driven solutions and modern web applications
+- 🤝 Leading projects focused on innovation, education and social impact
+
+---
+
+## 🌱 Currently learning
+
+- Product Strategy
+- Design Systems
+- Advanced UX Research
+- Cloud Architecture
+- AI-powered Product Development
+
+---
+
+## 💡 Interests
+
+- Product Design
+- Data Engineering
+- Human-Centered Design
+- Entrepreneurship
+- Social Innovation
+- Community Building
+- Technology for Good
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+React • Next.js • Vue • Angular • TypeScript • JavaScript • Tailwind CSS
+
+### Backend
+
+Node.js • NestJS • Java • Spring Boot • Fastify
+
+### Data & Cloud
+
+Google Cloud Platform • AWS • SQL • ETL • Data Pipelines
+
+### Design
+
+Figma • Design Systems • UX Research • Prototyping
+
+---
+
+## 🌟 Featured Projects
+
+🧠 **Mindsight**
+> Complete redesign and full-stack development of a digital mental wellbeing platform.
+
+♟ **Chilean Chess Federation**
+> UX redesign and complete redevelopment of the federation's official website.
+
+🌎 **Global Shapers Santiago**
+> Institutional platform with a custom CMS for managing members, projects, partnerships, blog and news.
+
+🚀 **Innpact Shaper**
+> Product design and development of a platform connecting young talent with impact-driven organizations.
+
+🏡 **Altos del Elizalde**
+> Branding, UX/UI and complete development of a real estate website.
+
+💙 **Atlas ONG**
+> Landing page and authentication flows for an NGO platform.
+
+---
+
+> *"Technology becomes meaningful when it creates opportunities, strengthens communities, and improves people's lives."*
+
+---
 
 ## 🌐 Socials:
 
